@@ -1,0 +1,39 @@
+port: 8989
+
+server: 
+  applicationConnectors:
+    - type: http 
+      port: 8089
+  adminConnectors:
+    - type: http
+      port: 8090
+
+jiraproject: 
+jiradefaultauth: 
+jiradogeauth: 
+
+# delay between purges of oldest in seconds
+purgeDelay: 
+
+# max age of 'oldest' in milliseconds
+maxAge: 
+
+#http Client property for jersey
+httpClientConfiguration:
+  # timeout after 3s while connecting, reading, or writing
+  timeout: 3s
+  connectionTimeout: 3s
+  # keep connections open for 10 minutes
+  timeToLive: 10m
+
+bugFilterConfiguration:
+  ancientBuilds: 
+  reallyOldBuilds: 
+  oldBuilds: 
+  oldCommercial: 
+  invalidCM12: 
+  fixedCM12: 
+  invalidCM13: 
+  fixedCM13: 
+
+
