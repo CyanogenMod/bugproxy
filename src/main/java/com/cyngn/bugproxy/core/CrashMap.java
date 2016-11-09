@@ -13,15 +13,15 @@ public class CrashMap {
 
     private long MAX_TIME; // time in milliseconds to compare issue age
 
-    private static final Pattern COMMUNITY121_PATTERN = Pattern.compile("^12.1-2016\\d{4}-(SNAPSHOT|NIGHTLY)-.*");
-    private static final Pattern COMMUNITY13_PATTERN = Pattern.compile("^13.0-2016\\d{4}-(SNAPSHOT|NIGHTLY)-.*");
-    private static final Pattern COMMERCIAL13_PATTERN = Pattern.compile("^13.(0|1)-Z.*");
-    private static final Pattern COMMERCIAL121_PATTERN = Pattern.compile("^12.1-Y.*");
+    private static final Pattern COMMUNITY141_PATTERN = Pattern.compile("^14.1-201[6-8]\\d{4}-(SNAPSHOT|NIGHTLY)-.*");
+    private static final Pattern COMMUNITY13_PATTERN = Pattern.compile("^13.0-201[6-7]\\d{4}-(SNAPSHOT|NIGHTLY)-.*");
+/*    private static final Pattern COMMERCIAL13_PATTERN = Pattern.compile("^13.(0|1)-Z.*");
+    private static final Pattern COMMERCIAL121_PATTERN = Pattern.compile("^12.1-Y.*");*/
 
-    private static final String CM121 = "CM12.1";
+    private static final String CM141 = "CM14.1";
     private static final String CM13 = "CM13";
-    private static final String COS121 = "COS12.1";
-    private static final String COS13 = "COS13";
+    /*private static final String COS121 = "COS12.1";
+    private static final String COS13 = "COS13";*/
 
     private BugDumpClient myClient;
     private String jiraAuth;
@@ -61,12 +61,12 @@ public class CrashMap {
     public String buildBucket(String buildid){
         if(COMMUNITY13_PATTERN.matcher(buildid).matches()){
             return CM13;
-        } else if (COMMUNITY121_PATTERN.matcher(buildid).matches()) {
-            return CM121;
-        } else if (COMMERCIAL121_PATTERN.matcher(buildid).matches()) {
-            return COS121;
-        } else if (COMMERCIAL13_PATTERN.matcher(buildid).matches()) {
-            return COS13;
+        } else if (COMMUNITY141_PATTERN.matcher(buildid).matches()) {
+            return CM141;
+/*        } else if (COMMERCIAL121_PATTERN.matcher(buildid).matches()) {
+            return COS121;*/
+/*        } else if (COMMERCIAL13_PATTERN.matcher(buildid).matches()) {
+            return COS13;*/
         } else {
             return " unknown";
         }

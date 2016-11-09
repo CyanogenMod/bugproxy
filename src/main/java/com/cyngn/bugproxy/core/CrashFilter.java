@@ -12,10 +12,10 @@ public class CrashFilter {
 
 
     //these shouldn't change often, they can be declared here to keep the config cleaner(ish).
-    private static final Pattern COMMUNITY121_PATTERN = Pattern.compile("^12.1-2016\\d{4}-(SNAPSHOT|NIGHTLY)-.*");
-    private static final Pattern COMMUNITY13_PATTERN = Pattern.compile("^13.0-2016\\d{4}-(SNAPSHOT|NIGHTLY)-.*");
-    private static final Pattern COMMERCIAL13_PATTERN = Pattern.compile("^13.(0|1)-Z.*");
-    private static final Pattern COMMERCIAL121_PATTERN = Pattern.compile("^12.1-Y.*");
+    private static final Pattern COMMUNITY141_PATTERN = Pattern.compile("^14.1-201[6-8]\\d{4}-(SNAPSHOT|NIGHTLY)-.*");
+    private static final Pattern COMMUNITY13_PATTERN = Pattern.compile("^13.0-201[6-7]\\d{4}-(SNAPSHOT|NIGHTLY)-.*");
+ //  private static final Pattern COMMERCIAL13_PATTERN = Pattern.compile("^13.(0|1)-Z.*");
+  //  private static final Pattern COMMERCIAL121_PATTERN = Pattern.compile("^12.1-Y.*");
 
     private static final Pattern MEMORYADDRESS_PATTERN = Pattern.compile("@[0-9a-f]{6,9}");
     private static final Pattern UID_PATTERN = Pattern.compile("uid.\\d{3,10}");
@@ -38,8 +38,8 @@ public class CrashFilter {
     private static Pattern FIXEDIN13_PATTERN;
     private static Pattern INVALIDIN13_PATTERN;
 
-    private static Pattern FIXEDIN12_PATTERN;
-    private static Pattern INVALIDIN12_PATTERN;
+    private static Pattern FIXEDIN14_PATTERN;
+    private static Pattern INVALIDIN14_PATTERN;
 
 
     public CrashFilter(BugFilterConfiguration config) {
@@ -50,8 +50,8 @@ public class CrashFilter {
         this.OLDCOMMERCIAL_PATTERN = Pattern.compile(config.getOldCommercial());
         this.FIXEDIN13_PATTERN = Pattern.compile(config.getFixedCM13(), Pattern.CASE_INSENSITIVE);
         this.INVALIDIN13_PATTERN = Pattern.compile(config.getInvalidCM13(), Pattern.CASE_INSENSITIVE);
-        this.FIXEDIN12_PATTERN = Pattern.compile(config.getFixedCM12(), Pattern.CASE_INSENSITIVE);
-        this.INVALIDIN12_PATTERN = Pattern.compile(config.getInvalidCM12(), Pattern.CASE_INSENSITIVE);
+        this.FIXEDIN14_PATTERN = Pattern.compile(config.getFixedCM14(), Pattern.CASE_INSENSITIVE);
+        this.INVALIDIN14_PATTERN = Pattern.compile(config.getInvalidCM14(), Pattern.CASE_INSENSITIVE);
     }
 
     public static boolean isValid(Crash incomming) {
@@ -64,7 +64,7 @@ public class CrashFilter {
             return false;
         }
 
-        if (COMMUNITY13_PATTERN.matcher(buildID).matches() || COMMERCIAL13_PATTERN.matcher(buildID).matches()) {
+        if (COMMUNITY13_PATTERN.matcher(buildID).matches() /* || COMMERCIAL13_PATTERN.matcher(buildID).matches() */) {
             System.out.print(buildID + " matched 13 ");
             if (FIXEDIN13_PATTERN.matcher(text).find()) {
                 System.out.print(" rejected - fixed ");
@@ -75,11 +75,11 @@ public class CrashFilter {
             }
 
         }
-        if (COMMUNITY121_PATTERN.matcher(buildID).matches() || COMMERCIAL121_PATTERN.matcher(buildID).matches()) {
-            System.out.print(buildID + " matched  121 ");
-            if (FIXEDIN12_PATTERN.matcher(text).matches()) {
+        if (COMMUNITY141_PATTERN.matcher(buildID).matches() ) {
+            System.out.print(buildID + " matched  141 ");
+            if (FIXEDIN14_PATTERN.matcher(text).matches()) {
                 return false;
-            } else if (INVALIDIN12_PATTERN.matcher(text).matches()) {
+            } else if (INVALIDIN14_PATTERN.matcher(text).matches()) {
                 return false;
             }
 

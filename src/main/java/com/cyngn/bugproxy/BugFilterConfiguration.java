@@ -12,8 +12,8 @@ public class BugFilterConfiguration extends Configuration{
 
     private String invalidCM13;
     private String fixedCM13;
-    private String invalidCM12;
-    private String fixedCM12;
+    private String invalidCM14;
+    private String fixedCM14;
 
     public BugFilterConfiguration(){
 
@@ -80,23 +80,23 @@ public class BugFilterConfiguration extends Configuration{
     }
 
     @JsonProperty
-    public String getInvalidCM12() {
-        return invalidCM12;
+    public String getInvalidCM14() {
+        return invalidCM14;
     }
 
     @JsonProperty
-    public void setInvalidCM12(String invalidCM12) {
-        this.invalidCM12 = invalidCM12;
+    public void setInvalidCM14(String invalidCM14) {
+        this.invalidCM14 = invalidCM14;
     }
 
     @JsonProperty
-    public String getFixedCM12() {
-        return fixedCM12;
+    public String getFixedCM14() {
+        return fixedCM14;
     }
 
     @JsonProperty
-    public void setFixedCM12(String fixedCM12) {
-        this.fixedCM12 = fixedCM12;
+    public void setFixedCM14(String fixedCM14) {
+        this.fixedCM14 = fixedCM14;
     }
 
 }

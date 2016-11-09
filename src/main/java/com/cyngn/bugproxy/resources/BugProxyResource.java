@@ -43,9 +43,9 @@ public class BugProxyResource {
         //System.out.println(cWrap.getProject());
 
         Crash crash = cWrap.toCrash();
-        if(cWrap.getProject().equalsIgnoreCase("{id=11600}")){
+/*        if(cWrap.getProject().equalsIgnoreCase("{id=11600}")){
             return bdClient.sendCrash(crash, "11600", dogeAuth);
-        }
+        }*/
 
         if (crash.getlabels().contains("crash")) {
 
